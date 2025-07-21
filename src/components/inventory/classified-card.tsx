@@ -69,21 +69,22 @@ export const ClassifiedCard = (props: ClassifiedCardProps) => {
 		<AnimatePresence>
 			{isVisible && (
 				<motion.div
-					initial={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-					transition={{ duration: 0.2 }}
-					className="bg-white relative rounded-md shadow-md overflow-hiddem flex flex-col"
+					initial={{ opacity: 1, scale: 1 }}
+					exit={{ opacity: 0, scale: 0.97 }}
+					whileHover={{ boxShadow: "0 8px 32px 0 rgba(0,0,0,0.12)" }}
+					transition={{ duration: 0.18 }}
+					className="relative rounded-2xl border border-slate-200 bg-white flex flex-col overflow-hidden transition-all duration-200 group"
 				>
-					<div className="aspect-3/2 relative">
+					<div className="aspect-[4/3] relative bg-slate-100">
 						<Link href={routes.singleClassified(classified.slug)}>
 							<ImgixImage
 								placeholder="blur"
 								blurDataURL={classified.images[0]?.blurhash}
 								src={classified.images[0]?.src}
 								alt={classified.images[0]?.alt}
-								className="object-cover rounded-t-md"
+								className="object-cover w-full h-full transition-transform duration-200 group-hover:scale-105"
 								fill={true}
-								quality={25}
+								quality={35}
 							/>
 						</Link>
 						<FavouriteButton
@@ -91,50 +92,49 @@ export const ClassifiedCard = (props: ClassifiedCardProps) => {
 							isFavourite={isFavourite}
 							id={classified.id}
 						/>
-						<div className="absolute top-2.5 right-3.5 bg-primary text-slate-50 font-bold px-2 py-1 rounded">
-							<p className="text-xs lg:text-base xl:text-lg font-semibold">
+						<div className="absolute top-3 right-4 z-10">
+							<span className="inline-block bg-gradient-to-r from-primary to-blue-600 text-white shadow-lg px-4 py-2 rounded-xl text-base font-bold drop-shadow-md">
 								{formatPrice({
 									price: classified.price,
 									currency: classified.currency,
 								})}
-							</p>
+							</span>
 						</div>
 					</div>
-					<div className="p-4 flex flex-col space-y-3">
+					<div className="p-5 flex flex-col gap-4 flex-1">
 						<div>
 							<Link
 								href={routes.singleClassified(classified.slug)}
-								className="text-sm md:text-base lg:text-lg font-semibold line-clamp-1 transition-colors hover:text-primary"
+								className="text-lg font-bold line-clamp-1 transition-colors text-black/50 hover:text-primary"
 							>
 								{classified.title}
 							</Link>
 							{classified?.description && (
-								<div className="text-xs md:text-sm xl:text-base text-gray-500 line-clamp-2">
+								<div className="text-sm text-gray-500 line-clamp-2 mt-1">
 									<HTMLParser html={classified.description} />
-									&nbsp;{" "}
-									{/* Used for equal spacing across each card in the grid */}
 								</div>
 							)}
-
-							<ul className="text-xs md:text-sm text-gray-600 xl:flex grid grid-cols-1 grid-rows-4 md:grid-cols-2 md:grid-rows-4 items-center justify-between w-full">
-								{getKeyClassifiedInfo(classified)
-									.filter((v) => v.value)
-									.map(({ id, icon, value }) => (
-										<li
-											key={id}
-											className="font-semibold flex xl:flex-col items-center gap-x-1.5"
-										>
-											{icon} {value}
-										</li>
-									))}
-							</ul>
 						</div>
-						<div className="mt-4 flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:gap-x-2 w-full">
+						<ul className="flex flex-wrap gap-3 bg-slate-50 rounded-lg px-3 py-2 mt-2 mb-2">
+							{getKeyClassifiedInfo(classified)
+								.filter((v) => v.value)
+								.map(({ id, icon, value }) => (
+									<li
+										key={id}
+										className="flex items-center gap-2 text-xs font-medium text-gray-700"
+									>
+										<span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary/10 text-primary">
+											{icon}
+										</span>
+										{value}
+									</li>
+								))}
+						</ul>
+						<div className="border-t border-slate-200 pt-4 mt-auto flex flex-col lg:flex-row gap-2">
 							<Button
-								className="flex-1 transition-colors hover:border-white hover:bg-primary hover:text-white py-2 lg:py-2.5 h-full text-xs md:text-sm xl:text-base"
+								className="flex-1 font-semibold py-2 text-base bg-primary text-white hover:bg-primary/90 transition-colors"
 								asChild
-								variant="outline"
-								size="sm"
+								size="lg"
 							>
 								<Link
 									href={routes.reserve(
@@ -146,9 +146,9 @@ export const ClassifiedCard = (props: ClassifiedCardProps) => {
 								</Link>
 							</Button>
 							<Button
-								className="flex-1 py-2 lg:py-2.5 h-full text-xs md:text-sm xl:text-base"
+								className="flex-1 font-semibold py-2 text-base border border-primary text-primary bg-white hover:bg-primary hover:text-white transition-colors"
 								asChild
-								size="sm"
+								size="lg"
 							>
 								<Link href={routes.singleClassified(classified.slug)}>
 									View Details

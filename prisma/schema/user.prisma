@@ -1,7 +1,7 @@
 model User {
   id             String    @id @default(cuid())
   email          String    @unique
-  hashedPassword String    @map("hashed_password")
+  hashedPassword String    @db.VarChar(60) @map("hashed_password")
   sessions       Session[]
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt

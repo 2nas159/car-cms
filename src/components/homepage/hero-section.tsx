@@ -50,14 +50,18 @@ export const HeroSection = async (props: AwaitedPageProps) => {
 						Discover your dream car today
 					</h2>
 				</div>
-				<div className="max-w-md w-full mx-auto p-6 bg-white sm:rounded-xl shadow-lg">
-					<div className="space-y-4">
-						<div className="space-y-2 flex flex-col w-full gap-x-4">
-							<HomepageTaxonomyFilters
-								minMaxValues={minMaxResult}
-								searchParams={searchParams}
-							/>
-						</div>
+				<div className="max-w-md w-full mx-auto p-8 bg-gradient-to-br from-white/95 to-slate-100/90 sm:rounded-2xl shadow-2xl border border-slate-200 backdrop-blur-md">
+					<div className="mb-6 text-center">
+						<h3 className="text-2xl font-bold text-primary mb-2 tracking-tight">Find Your Next Car</h3>
+						<p className="text-gray-500 text-base">Search by make, model, year, price and more</p>
+					</div>
+					<div className="space-y-4 flex flex-col w-full gap-x-4">
+						<HomepageTaxonomyFilters
+							minMaxValues={minMaxResult}
+							searchParams={searchParams}
+						/>
+					</div>
+					<div className="mt-6 flex flex-col gap-3">
 						<SearchButton count={classifiedsCount} />
 						{isFilterApplied && (
 							<Button

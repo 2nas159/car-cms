@@ -53,16 +53,16 @@ export const TaxonomyFilters = (props: TaxonomyFiltersProps) => {
 				label="Model"
 				name="model"
 				value={searchParams?.model as string}
-				options={models}
 				onChange={handleChange}
+				options={models}
 				disabled={!models.length}
 			/>
 			<Select
 				label="Model Variant"
 				name="modelVariant"
 				value={searchParams?.modelVariant as string}
-				options={modelVariants}
 				onChange={handleChange}
+				options={modelVariants}
 				disabled={!modelVariants.length}
 			/>
 		</>

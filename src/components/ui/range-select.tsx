@@ -17,11 +17,11 @@ export const RangeSelect = (props: RangeSelectProps) => {
 
 	return (
 		<>
-			<h4 className="text-sm font-semibold">{label}</h4>
+			<h4 className="text-sm font-semibold text-gray-700">{label}</h4>
 			<div className="!mt-1 flex gap-2">
 				<select
 					{...minSelect}
-					className="flex-1 w-full pl-3 py-2 border rounded-md custom-select appearance-none pr-12 bg-no-repeat"
+					className="flex-1 w-full pl-3 py-2 border rounded-md custom-select appearance-none pr-12 bg-no-repeat text-gray-800"
 				>
 					<option value="">Select</option>
 					{minSelect.options.map((option) => {
@@ -34,7 +34,7 @@ export const RangeSelect = (props: RangeSelectProps) => {
 				</select>
 				<select
 					{...maxSelect}
-					className="flex-1 w-full pl-3 py-2 border rounded-md custom-select appearance-none pr-12 bg-no-repeat"
+					className="flex-1 w-full pl-3 py-2 border rounded-md custom-select appearance-none pr-12 bg-no-repeat text-gray-800"
 				>
 					<option value="">Select</option>
 					{maxSelect.options.map((option) => {
