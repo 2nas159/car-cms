@@ -37,7 +37,6 @@ export const OtpForm = () => {
 	const onSubmit: SubmitHandler<OtpSchemaType> = (data) => {
 		startSubmitTransition(async () => {
 			const result = await completeChallengeAction(data.code);
-			console.log("first", { result });
 
 			if (!result?.success) {
 				toast({
