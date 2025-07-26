@@ -61,10 +61,10 @@ export const Welcome = (props: MultiStepFormComponentProps) => {
 							/>
 						</div>
 						<div className="flex-1">
-							<h2 className="text-lg font-semibold line-clamp-1">
+							<h2 className="text-lg font-semibold line-clamp-1 text-black">
 								{props.classified.title}
 							</h2>
-							<div className="text-xs line-clamp-2">
+							<div className="text-xs line-clamp-2 text-black">
 								<HTMLParser html={props.classified.description ?? ""} />
 							</div>
 						</div>
@@ -73,12 +73,12 @@ export const Welcome = (props: MultiStepFormComponentProps) => {
 
 				<div className="flex justify-around items-center bg-gray-100 p-4 rounded-md mb-4">
 					<div className="text-center">
-						<p className="font-bold">Select Handover Date & Time</p>
+						<p className="font-bold text-black">Select Handover Date & Time</p>
 						<p className="text-gray-500">approx. 1 minute</p>
 					</div>
 					<ArrowRightIcon className="w-6 h-6" />
 					<div className="text-center">
-						<p className="font-bold">Submit Your Details</p>
+						<p className="font-bold text-black">Submit Your Details</p>
 						<p className="text-gray-500">approx. 1 minute</p>
 					</div>
 				</div>
